@@ -1,0 +1,13 @@
+.body{
+    background-color: rgb(95, 255, 95);
+    margin: auto;
+    display: flex;
+}
+.form-wrapper{
+    height: 550px;
+    width: 550px;
+    background-color: white;
+    margin: auto;
+    display: flex;
+    flex-direction: column;
+}
