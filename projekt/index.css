@@ -2,6 +2,7 @@
     background-color: rgb(95, 255, 95);
     margin: auto;
     display: flex;
+    height: 100vh;
 }
 .form-wrapper{
     height: 550px;
@@ -10,4 +11,25 @@
     margin: auto;
     display: flex;
     flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+.input{
+    height: 50px;
+    width: 200px;
+    
+}
+.button{
+    background-color: green;
+    color: white;
+    border: green;
+    padding: 10px 20px;
+    width: 208px;
+}
+.span{
+  color: grey;
+}
+.link{
+ color: green;
+  text-decoration: none;
 }
