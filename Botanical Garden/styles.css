@@ -5,7 +5,7 @@
 }
 .buttons {
     display: flex;
-    align-items: flex;
+    align-items: flex; /* TODO correct value */
     width: 1400px;
     height: 88px;
 }
