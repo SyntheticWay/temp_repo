@@ -1,18 +1,25 @@
-.img {
+@media only screen and (min-width: 1400px){
+    .logo {
+    
     height: 59px;
     width: 263px;
     padding: 14px 141px 15px 99px;
 }
-.buttons {
+header{
     display: flex;
-    align-items: flex; /* TODO correct value */
+    justify-content: row;
+    
+}
+.buttons, button {
+    display: flex;
+    align-items:center;
+    justify-content: center; 
+    flex-direction: row;/* TODO correct value */
     width: 1400px;
     height: 88px;
-}
-.button1 {
-    background-color: rgba(143, 203, 255, 0);
+     background-color: rgba(143, 203, 255, 0);
     border: 0cap;
-    padding: 20px 40px 20px 0px;
+    padding: 20px 40px 20px 20px;
     color: #475f45;
     font-weight: bold;
     font-size: 14px;
@@ -20,18 +27,7 @@
         Roboto, Oxygen, Ubuntu, Cantarell, "Open Sans", "Helvetica Neue",
         sans-serif;
 }
-.button2 {
-    width: 169px;
-    height: 46px;
-    background-color: rgba(240, 248, 255, 0);
-    border-color: #475f45;
-    color: #475f45;
-    font-weight: bold;
-    font-size: 14px;
-    font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI",
-        Roboto, Oxygen, Ubuntu, Cantarell, "Open Sans", "Helvetica Neue",
-        sans-serif;
 }
-.button3 {
-    padding: 20px 40px 20px 0px;
-}
+
+
+
