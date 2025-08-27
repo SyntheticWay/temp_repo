@@ -1,24 +1,23 @@
 /*@media only screen and (min-width: 1400px){ */
-    .logo {         
-    
+.logo {
     height: 59px;
     width: 263px;
     padding: 14px 120px 15px 99px;
 }
-header{
+header {
     display: flex;
     justify-content: row;
     align-items: center;
-    
 }
-.buttons, button {
+.buttons,
+button {
     display: flex;
-    align-items:center;
-    justify-content: center; 
-    flex-direction: row;/* TODO correct value */
-    
+    align-items: center;
+    justify-content: center;
+    flex-direction: row; /* TODO correct value */
+
     height: 15px;
-     background-color: rgba(143, 203, 255, 0);
+    background-color: rgba(143, 203, 255, 0);
     border: 0cap;
     padding: 22px 20px 20px 20px;
     color: #475f45;
@@ -29,14 +28,14 @@ header{
         sans-serif;
 }
 .button2 {
-     display: flex;
-    align-items:center;
-    justify-content: center; 
-    flex-direction: row;/* TODO correct value */
-    
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: row; /* TODO correct value */
+
     height: 15px;
-     background-color: rgba(143, 203, 255, 0);
-    
+    background-color: rgba(143, 203, 255, 0);
+
     padding: 22px 20px 20px 20px;
     color: #475f45;
     font-weight: bold;
@@ -46,6 +45,3 @@ header{
         sans-serif;
 }
 /*} */
-
-
-
