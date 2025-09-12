@@ -169,13 +169,13 @@ header {
     font-weight: bold;
     margin-left: 45px;
 }
-.section3-wrapper{
+.section3{
     display: flex;
-    flex-direction: row;
-    
+    flex-direction: column;
+
 }
 .section3-content-wrapper{
     display: flex;
-    flex-direction: column;
-    align-items: center;
+    flex-direction: row;
+    
 }
