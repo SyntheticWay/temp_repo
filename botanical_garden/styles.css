@@ -35,7 +35,23 @@ header {
 
 /* TODO add hover effect as on MEMBERSHIP button. Add color inversion between green & white while clicking */
 .navigation-button:hover {
-    background-color: #e7e7e7;
+    background-color: #414840;
+    color: aliceblue;
+    border: 1px solid #414840;
+}
+.section1-button1:hover {
+    background-color: aliceblue;
+    color: #414840;
+    border: 1px solid #414840;
+}
+.section1-button2:hover {
+    background-color: #414840;
+    color: aliceblue;
+    border: 1px solid #414840;
+}
+.section2-button1:hover{
+     background-color: aliceblue;
+    color: #414840;
     border: 1px solid #414840;
 }
 
@@ -94,4 +110,66 @@ header {
 .section1-image-wraper{
     height: 660;
     width: 478;
+}
+.section2{
+    background-color:#414840;
+    height: 1035px;
+   
+    padding: 56px 100px 0px 100px;
+    display: flex;
+    flex-direction: column;
+    
+    
+
+}
+.section2-content-wrapper{
+    
+    float: left;
+}
+.top-section2{
+    display: flex;
+    flex-direction: row;
+    align-items: center; 
+    margin: 96px 0px 80px 0px;
+
+}
+.section2-text{
+    color:white;
+    font-size:20px;
+    font-weight: 150;
+    line-height: normal;
+    font-family:system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    margin: 15px 0px 32px 40px;
+}
+.section2-title{
+    color:white;
+    font-size: 45px;
+    font-weight: 500;
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    line-height: normal;
+    margin: 15px 0px 0px 40px;
+}
+.image1{
+    width: 534px;
+    height: 354px;
+    
+}
+
+.image2{
+    width: 1040px;
+    height: 409px;
+}
+.section2-button1{
+    color:white;
+    background-color: rgba(255, 255, 255, 0);
+    border: 1px solid white;
+    padding: 20px 60px;
+    font-size: 14px;
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    font-weight: bold;
+    margin-left: 45px;
+}
+.section3-wrapper{
+    display: flex;
+    flex-direction: row;
 }
