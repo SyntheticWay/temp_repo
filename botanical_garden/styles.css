@@ -118,9 +118,7 @@ header {
 }
 .section2 {
     background-color: #414840;
-    height: 1035px;
-
-    padding: 56px 100px 0px 100px;
+    padding: 96px 180px;
     display: flex;
     flex-direction: column;
 }
@@ -130,7 +128,6 @@ header {
     display: flex;
     flex-direction: row;
     align-items: center;
-    margin: 96px 0px 80px 0px;
 }
 .section2-text {
     color: white;
@@ -160,6 +157,7 @@ header {
 .image2 {
     width: 1040px;
     height: 409px;
+    margin-top: 80px;
 }
 .section2-button1 {
     color: white;
