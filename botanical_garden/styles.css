@@ -121,6 +121,7 @@ header {
     padding: 96px 180px;
     display: flex;
     flex-direction: column;
+    position: relative;
 }
 .section2-content-wrapper {
 }
@@ -152,12 +153,21 @@ header {
 .image1 {
     width: 534px;
     height: 354px;
+    z-index: 1;
 }
 
 .image2 {
     width: 1040px;
     height: 409px;
     margin-top: 80px;
+    z-index: 1;
+}
+.branch {
+    width: 534px;
+    height: 462px;
+    position: absolute;
+    right: 0;
+    bottom: 248px;
 }
 .section2-button1 {
     color: white;
