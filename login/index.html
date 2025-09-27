@@ -28,9 +28,9 @@
                         </div>
 
                         <input
-                            id="input1"
+                            id="login"
                             type="text"
-                            oninput="lala()"
+                            oninput="loginHandler()"
                             class="textt"
                             placeholder="Email or Phone"
                         />
@@ -44,7 +44,7 @@
                         </div>
 
                         <input
-                            id="input2"
+                            id="password"
                             type="password"
                             oninput="lala()"
                             class="textt"
@@ -52,7 +52,14 @@
                         />
                     </div>
                     <a class="href1" href="#">Forgot password?</a>
-                    <button class="buttons">Login</button>
+                    <button
+                        id="submitButton"
+                        onclick="buttonHandler()"
+                        type="button"
+                        class="buttons"
+                    >
+                        Login
+                    </button>
                     <div class="links-wrapper">
                         <br />
                         <p>Not a member?</p>
@@ -60,10 +67,17 @@
                     </div>
                 </div>
             </div>
-            <p id="lalal"></p>
-            <p id="lalal2"></p>
+            <p id="loginBox"></p>
+            <p id="password"></p>
+            <p id="demo"></p>
         </main>
 
         <script src="index.js"></script>
+        <!-- <script>
+            const button = document.getElementById("submitButton");
+            button.addEventListener("click", function () {
+                document.getElementById("demo").innerHTML = "logined";
+            });
+        </script> -->
     </body>
 </html>
