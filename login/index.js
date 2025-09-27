@@ -36,17 +36,18 @@ function loginHandler() {
     // login.innerHTML = "login: " + loginValue;
     console.log("Value: " + loginValue);
 }
+const h2 = document.createElement("h2");
+
 function passwordHandler() {
     const passwordBox = document.getElementById("passwordBox");
     const passwordValue = document.querySelector(".passwordInput").value;
-    const h2 = document.createElement("h2");
-    h2.innerText = `password: ${passwordValue}`;
-    // if(h2.value = 0){
 
-    // }else{
-
-    // }
-    console.log(h2.textContent.length);
+    if (h2) {
+        h2.innerText = `password: ${passwordValue}`;
+    } else {
+        const h2 = document.createElement("h2");
+        h2.innerText = `password: ${passwordValue}`;
+    }
 
     passwordBox.innerHTML = h2;
     const boxWrapper = document.getElementsByClassName("boxWrapper")[0];
