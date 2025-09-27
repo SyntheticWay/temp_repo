@@ -1,0 +1,88 @@
+body {
+    background-color: rgb(46, 172, 128);
+    display: flex;
+    justify-content: center;
+}
+.content-wrapper {
+    background-color: white;
+    width: 400px;
+    border: 1;
+    border-radius: 2%;
+}
+.login-header {
+    background-color: rgb(35, 131, 97);
+    color: white;
+    text-align: center;
+    border: 1;
+    border-radius: 2% 2% 0% 0%;
+    font-family: "Signika Negative", sans-serif;
+}
+h1 {
+    padding: 10px;
+}
+.pic1 {
+    width: 20px;
+    height: 20px;
+}
+.pic2 {
+    height: 20px;
+    width: 20px;
+}
+.pic-wrapper {
+    background-color: rgb(35, 131, 97);
+    height: 30px;
+    width: 30px;
+    border: 1px;
+    border-radius: 10% 0% 0% 10%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.login-form-wrapper {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+}
+.login-form {
+    display: flex;
+    flex-direction: row;
+    margin: 5px;
+}
+.textt {
+    width: 320px;
+}
+a {
+    text-decoration: none;
+    color: rgb(35, 131, 97);
+    font-family: "Signika Negative", sans-serif;
+}
+input {
+    border-color: rgb(220, 220, 220);
+    border-style: solid;
+    font-family: "Signika Negative", sans-serif;
+}
+.buttons {
+    /* border: 1;
+    border-radius: 5%;*/
+    border-color: rgba(35, 131, 97, 0);
+    background-color: rgb(35, 131, 97);
+    color: white;
+    width: 355px;
+    height: 30px;
+    font-family: "Signika Negative", sans-serif;
+}
+.links-wrapper {
+    display: flex;
+    flex-direction: row;
+    margin-top: -3px;
+    font-family: "Signika Negative", sans-serif;
+}
+.href1 {
+    margin-left: -241px;
+    margin-bottom: 20px;
+}
+.href2 {
+    margin-top: 16px;
+    margin-left: 5px;
+}

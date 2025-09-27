@@ -16,15 +16,6 @@ a {
     color: inherit;
     text-decoration: none;
 }
-body {
-    display: flex;
-    flex-direction: column;
-    min-height: 100vh;
-}
-
-main {
-    flex: 1;
-}
 .logo {
     margin-left: 100px;
 }
@@ -320,7 +311,7 @@ footer {
 }
 .footer-copyright {
     background-color: #343d33;
-    padding: 20px 0;
+    padding: 30px 0;
     text-align: center;
     color: white;
     font-size: 14px;

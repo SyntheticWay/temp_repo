@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <link href="style.css" rel="stylesheet" />
+        <link rel="preconnect" href="https://fonts.googleapis.com" />
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+        <link
+            href="https://fonts.googleapis.com/css2?family=Oswald:wght@200..700&family=Signika+Negative:wght@300..700&display=swap"
+            rel="stylesheet"
+        />
+        <title>Login Form</title>
+    </head>
+    <body>
+        <main>
+            <div class="content-wrapper">
+                <div class="login-header">
+                    <h1>Login Form</h1>
+                </div>
+                <div class="login-form-wrapper">
+                    <div class="login-form">
+                        <div class="pic-wrapper">
+                            <img
+                                class="pic1"
+                                src="pics/icons8-account-30.png"
+                            />
+                        </div>
+
+                        <input
+                            id="input1"
+                            type="text"
+                            oninput="lala()"
+                            class="textt"
+                            placeholder="Email or Phone"
+                        />
+                    </div>
+                    <div class="login-form">
+                        <div class="pic-wrapper">
+                            <img
+                                class="pic2"
+                                src="pics/icons8-password-50.png"
+                            />
+                        </div>
+
+                        <input
+                            id="input2"
+                            type="password"
+                            oninput="lala()"
+                            class="textt"
+                            placeholder="Password"
+                        />
+                    </div>
+                    <a class="href1" href="#">Forgot password?</a>
+                    <button class="buttons">Login</button>
+                    <div class="links-wrapper">
+                        <br />
+                        <p>Not a member?</p>
+                        <a class="href2" href="#">Signup now</a>
+                    </div>
+                </div>
+            </div>
+            <p id="lala"></p>
+        </main>
+
+        <script src="index.js"></script>
+    </body>
+</html>
