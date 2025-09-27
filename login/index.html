@@ -46,8 +46,8 @@
                         <input
                             id="password"
                             type="password"
-                            oninput="lala()"
-                            class="textt"
+                            oninput="passwordHandler()"
+                            class="textt passwordInput"
                             placeholder="Password"
                         />
                     </div>
@@ -67,9 +67,11 @@
                     </div>
                 </div>
             </div>
-            <p id="loginBox"></p>
-            <p id="password"></p>
-            <p id="demo"></p>
+            <div class="boxWrapper">
+                <p id="loginBox"></p>
+                <p id="passwordBox"></p>
+                <p id="demo"></p>
+            </div>
         </main>
 
         <script src="index.js"></script>
