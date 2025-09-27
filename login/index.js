@@ -6,6 +6,8 @@
 function lala() {
     const inputt1 = document.getElementById("input1").value;
     const inputt2 = document.getElementById("input2").value;
-    document.getElementById("lala").innerHTML = "lala: " + inputt1;
-    document.getElementById("lala").innerHTML = "lala: " + inputt2;
+    document.getElementById("lalal").innerHTML = "lala: " + inputt1;
+    document.getElementById("lalal2").innerHTML = "lala: " + inputt2;
+    console.log(inputt1);
+    console.log(inputt2);
 }
