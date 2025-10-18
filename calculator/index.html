@@ -4,6 +4,8 @@
         <meta charset="UTF-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
         <link rel="stylesheet" href="styles.css" />
+        <script src="https://cdn.jsdelivr.net/npm/mathjs@12.4.0/lib/browser/math.js"></script>
+
         <title>kalkulator</title>
     </head>
     <body>
@@ -12,25 +14,240 @@
                 <div class="numbers-wrapper">
                     <input class="calc-input" type="text" placeholder="0" />
                     <div class="numbers">
-                        <button id="btn1">7</button>
-                        <button id="btn2">8</button>
-                        <button id="btn3">9</button>
-                        <button id="btn4">+</button>
-                        <button id="btn5">4</button>
-                        <button id="btn6">5</button>
-                        <button id="btn7">6</button>
-                        <button id="btn8">-</button>
-                        <button id="btn9">1</button>
-                        <button id="btn10">2</button>
-                        <button id="btn11">3</button>
-                        <button id="btn12">x</button>
-                        <button id="btn13">c</button>
-                        <button id="btn14">0</button>
-                        <button id="btn15">=</button>
-                        <button id="btn16">/</button>
+                        <button
+                            id="btn1"
+                            value="7"
+                            style="
+                                background-image: linear-gradient(
+                                    0deg,
+                                    rgb(204, 202, 202) 0%,
+                                    rgb(204, 202, 202) 50%,
+                                    rgb(223, 222, 222) 51%
+                                );
+                            "
+                        >
+                            7
+                        </button>
+                        <button
+                            id="btn2"
+                            value="8"
+                            style="
+                                background-image: linear-gradient(
+                                    0deg,
+                                    rgb(204, 202, 202) 0%,
+                                    rgb(204, 202, 202) 50%,
+                                    rgb(223, 222, 222) 51%
+                                );
+                            "
+                        >
+                            8
+                        </button>
+                        <button
+                            id="btn3"
+                            value="9"
+                            style="
+                                background-image: linear-gradient(
+                                    0deg,
+                                    rgb(204, 202, 202) 0%,
+                                    rgb(204, 202, 202) 50%,
+                                    rgb(223, 222, 222) 51%
+                                );
+                            "
+                        >
+                            9
+                        </button>
+                        <button
+                            id="btn4"
+                            value="+"
+                            style="
+                                background-image: linear-gradient(
+                                    0deg,
+                                    rgb(31, 31, 31) 0%,
+                                    rgb(31, 31, 31) 50%,
+                                    rgb(49, 49, 49) 51%
+                                );
+                                color: white;
+                            "
+                        >
+                            +
+                        </button>
+                        <button
+                            id="btn5"
+                            value="4"
+                            style="
+                                background-image: linear-gradient(
+                                    0deg,
+                                    rgb(204, 202, 202) 0%,
+                                    rgb(204, 202, 202) 50%,
+                                    rgb(223, 222, 222) 51%
+                                );
+                            "
+                        >
+                            4
+                        </button>
+                        <button
+                            id="btn6"
+                            value="5"
+                            style="
+                                background-image: linear-gradient(
+                                    0deg,
+                                    rgb(204, 202, 202) 0%,
+                                    rgb(204, 202, 202) 50%,
+                                    rgb(223, 222, 222) 51%
+                                );
+                            "
+                        >
+                            5
+                        </button>
+                        <button
+                            id="btn7"
+                            value="6"
+                            style="
+                                background-image: linear-gradient(
+                                    0deg,
+                                    rgb(204, 202, 202) 0%,
+                                    rgb(204, 202, 202) 50%,
+                                    rgb(223, 222, 222) 51%
+                                );
+                            "
+                        >
+                            6
+                        </button>
+                        <button
+                            id="btn8"
+                            value="-"
+                            style="
+                                background-image: linear-gradient(
+                                    0deg,
+                                    rgb(31, 31, 31) 0%,
+                                    rgb(31, 31, 31) 50%,
+                                    rgb(49, 49, 49) 51%
+                                );
+                                color: white;
+                            "
+                        >
+                            -
+                        </button>
+                        <button
+                            id="btn9"
+                            value="1"
+                            style="
+                                background-image: linear-gradient(
+                                    0deg,
+                                    rgb(204, 202, 202) 0%,
+                                    rgb(204, 202, 202) 50%,
+                                    rgb(223, 222, 222) 51%
+                                );
+                            "
+                        >
+                            1
+                        </button>
+                        <button
+                            id="btn10"
+                            value="2"
+                            style="
+                                background-image: linear-gradient(
+                                    0deg,
+                                    rgb(204, 202, 202) 0%,
+                                    rgb(204, 202, 202) 50%,
+                                    rgb(223, 222, 222) 51%
+                                );
+                            "
+                        >
+                            2
+                        </button>
+                        <button
+                            id="btn11"
+                            value="3"
+                            style="
+                                background-image: linear-gradient(
+                                    0deg,
+                                    rgb(204, 202, 202) 0%,
+                                    rgb(204, 202, 202) 50%,
+                                    rgb(223, 222, 222) 51%
+                                );
+                            "
+                        >
+                            3
+                        </button>
+                        <button
+                            id="btn12"
+                            value="*"
+                            style="
+                                background-image: linear-gradient(
+                                    0deg,
+                                    rgb(31, 31, 31) 0%,
+                                    rgb(31, 31, 31) 50%,
+                                    rgb(49, 49, 49) 51%
+                                );
+                                color: white;
+                            "
+                        >
+                            x
+                        </button>
+                        <button
+                            id="btn13"
+                            value="c"
+                            style="
+                                background-image: linear-gradient(
+                                    0deg,
+                                    rgb(149, 0, 0) 0%,
+                                    rgb(149, 0, 0) 50%,
+                                    rgb(178, 57, 57) 51%
+                                );
+                                color: white;
+                            "
+                        >
+                            c
+                        </button>
+                        <button
+                            id="btn14"
+                            value="0"
+                            style="
+                                background-image: linear-gradient(
+                                    0deg,
+                                    rgb(204, 202, 202) 0%,
+                                    rgb(204, 202, 202) 50%,
+                                    rgb(223, 222, 222) 51%
+                                );
+                            "
+                        >
+                            0
+                        </button>
+                        <button
+                            id="btn15"
+                            value="="
+                            style="
+                                background-image: linear-gradient(
+                                    0deg,
+                                    rgb(31, 31, 31) 0%,
+                                    rgb(31, 31, 31) 50%,
+                                    rgb(49, 49, 49) 51%
+                                );
+                                color: white;
+                            "
+                        >
+                            =
+                        </button>
+                        <button
+                            id="btn16"
+                            value="/"
+                            style="
+                                background-image: linear-gradient(
+                                    0deg,
+                                    rgb(31, 31, 31) 0%,
+                                    rgb(31, 31, 31) 50%,
+                                    rgb(49, 49, 49) 51%
+                                );
+                                color: white;
+                            "
+                        >
+                            /
+                        </button>
                     </div>
                 </div>
             </div>
         </main>
+        <script src="script.js"></script>
     </body>
 </html>
