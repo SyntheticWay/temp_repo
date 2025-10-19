@@ -11,18 +11,23 @@ let actionSymbol = null;
 for (let i = 0; i < buttonArray.length; i++) {
     buttonArray[i].addEventListener("click", function (event) {
         // buttonArray[i].innerText = calcInput.value;
-        // calcInput.value += buttonArray[i].value;
-        // const calcSaver = buttonArray[i].value;
-        // calcInput.value = calcSaver;
+        const value = event.target.value; //click value
+        calcInput.value += value; //input value
 
-        const value = event.target.value;
-        console.log("value", value);
+        // if (value === "=") {
+        //     if (actionSymbol === "+") {
+        //         console.log("calc input", calcInput.value);
+        //     } else if (actionSymbol === "-") {
+        //     }
+        // }
 
-        if (value === "=") {
-            console.log("!!!!!!!");
-            if (actionSymbol === "+") {
-            } else if (actionSymbol === "-") {
-            }
+        if (value === "+") {
+            console.log("calc input", calcInput.value);
+            actionSymbol = value;
+            left = calcInput.value;
+            left.replace(value, "");
+            console.log(left);
+        } else if (actionSymbol === "-") {
         }
 
         // switch (key) {
