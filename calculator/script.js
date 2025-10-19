@@ -24,12 +24,46 @@ for (let i = 0; i < buttonArray.length; i++) {
         if (value === "+") {
             console.log("calc input", calcInput.value);
             actionSymbol = value;
-            left = calcInput.value;
-            left.replace(value, "");
-            console.log(left);
-        } else if (actionSymbol === "-") {
-        }
+            left = calcInput.value.replace(value, "");
+        } else if (value === "-") {
+            actionSymbol = value;
+            left = calcInput.value.replace(value, "");
+        } else if (value === "*") {
+            actionSymbol = value;
+            left = calcInput.value.replace(value, "");
+        } else if (value === "/") {
+            actionSymbol = value;
+            left = calcInput.value.replace(value, "");
+        } else if (value === "c") {
+            actionSymbol = value;
+            calcInput.value = "";
+        } else if (value === "=") {
+            right = calcInput.value
+                .replace(left + actionSymbol, "")
+                .replace(value, "");
 
+            if (actionSymbol === "+") {
+                const res = plus(left, right);
+                calcInput.value = res;
+                console.log(res);
+            } else if (actionSymbol === "-") {
+                const res = minus(left, right);
+                calcInput.value = res;
+                console.log(res);
+            } else if (actionSymbol === "*") {
+                const res = mnoz(left, right);
+                calcInput.value = res;
+                console.log(res);
+            } else if (actionSymbol === "/") {
+                const res = delit(left, right);
+                calcInput.value = res;
+                console.log(res);
+            }
+
+            //сменить тип переменных с стринг на инт
+            //! слева и справа строка
+        }
+        //TODO 1 + 1, 1+"1"
         // switch (key) {
         //     case value:
 
@@ -42,16 +76,24 @@ for (let i = 0; i < buttonArray.length; i++) {
 }
 
 function plus(a, b) {
-    return a + b;
+    const numberA = parseInt(a);
+    const numberB = parseInt(b);
+    return (numberA + numberB).toString();
 }
 function minus(a, b) {
-    return a - b;
+    const numberA = parseInt(a);
+    const numberB = parseInt(b);
+    return (numberA - numberB).toString();
 }
 function mnoz(a, b) {
-    return a * b;
+    const numberA = parseInt(a);
+    const numberB = parseInt(b);
+    return (numberA * numberB).toString();
 }
 function delit(a, b) {
-    return a / b;
+    const numberA = parseInt(a);
+    const numberB = parseInt(b);
+    return (numberA / numberB).toString();
 }
 
 function calc() {
