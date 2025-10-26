@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <link rel="stylesheet" href="styles.css" />
+        <title>chess</title>
+    </head>
+    <body>
+        <main>
+            <div class="chess-wrapper"></div>
+        </main>
+        <script>
+            const chessWrapper = document.querySelector(".chess-wrapper");
+
+            // for (let i = 0; i < 64; i++) {
+            //     const square = document.createElement("div");
+            //     if (i % 8 == 0) {
+            //         // if (i % 2 == 0) {
+            //         //     square.classList.add("black");
+            //         // } else {
+            //         //     square.classList.add("white");
+            //         // }
+            //         square.textContent = i;
+            //     } else {
+            //     }
+            //     chessWrapper.appendChild(square);
+
+            // }
+
+            for (let rows = 8; rows > 0; rows--) {
+                for (let columns = 1; columns < 9; columns++) {
+                    const square = document.createElement("div");
+                    //дать каждому квадрату номер в айди
+                    //какой номер использовать? => 1a для первой ячейки
+                    //как получить 1а? => rows eta 1
+                    // как получить а? => from columns
+                    // как получить буквы из колумнс ? =>
+
+                    square.setAttribute("id", letterProcessor(rows, columns));
+
+                    if ((rows + columns) % 2 == 0) {
+                        square.classList.add("white");
+                    } else {
+                        square.classList.add("black");
+                    }
+
+                    square.addEventListener("click", (e) => {
+                        console.log(e.target.id);
+                    });
+
+                    chessWrapper.appendChild(square);
+                }
+            }
+            console.log(chessWrapper, typeof chessWrapper);
+
+            function letterProcessor(rowsNumber, columnNumber) {
+                const lettersArray = ["A", "B", "C", "D", "E", "F", "G", "H"];
+                // let array = [];
+                // lettersArray.forEach(item =>{
+                //     array.push({columnNumber})
+                // })
+
+                return `${rowsNumber}${lettersArray[columnNumber - 1]}`;
+                // присвоить колонки к своей букве
+                //TODO записать номер ячейки в айди
+            }
+        </script>
+    </body>
+</html>

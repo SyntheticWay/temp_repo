@@ -1,0 +1,15 @@
+.chess-wrapper {
+    display: inline-grid;
+    grid-template-columns: repeat(8, 60px);
+    grid-template-rows: repeat(8, 60px);
+    padding: 1px;
+    border: 5px solid #ff4c4c;
+}
+
+.black {
+    background-color: black;
+}
+
+.white {
+    background-color: #fff;
+}
