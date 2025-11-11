@@ -237,20 +237,26 @@
                 blackRightRook,
                 blackQueen,
                 blackKing,
+                //TODO create pawns array/object
                 blackPawn,
             ];
 
-            //добавить фигуры
-            //начальное положение фигур
-            //привязать фигуры к их начальному положению
+            // function dragoverHandler(e) {
+            //     console.log("shtoto2");
+            //     e.preventDefault();
+            // }
+            // function dragstartHandler(ev) {
+            //     ev.dataTransfer.setData("text", ev.target.id);
+            //     console.log("shtoto");
+            // }
 
             for (let rows = 8; rows > 0; rows--) {
                 for (let columns = 1; columns < 9; columns++) {
                     const square = document.createElement("div");
                     square.setAttribute("class", "square");
-                    // сравнивать текущее положение обьекта с айди квадрата
-                    // поставить там картинку
-                    //использовать цикл возможно форич
+                    square.setAttribute("ondragover", (e) =>
+                        dragoverHandler(e)
+                    );
                     square.setAttribute("id", letterProcessor(rows, columns));
 
                     blackFigures.forEach((element) => {
@@ -260,6 +266,10 @@
                             figureImage.setAttribute("src", element.src);
                             figureImage.setAttribute("class", "figure");
                             figureImage.setAttribute("id", element.nameFigure);
+                            figureImage.setAttribute("draggable", true);
+                            // figureImage.setAttribute("ondragstart", (e) =>
+                            //     dragstartHandler(e)
+                            // );
 
                             square.appendChild(figureImage);
                         }
@@ -271,14 +281,11 @@
                             figureImage.setAttribute("src", element.src);
                             figureImage.setAttribute("class", "figure");
                             figureImage.setAttribute("id", element.nameFigure);
+                            figureImage.setAttribute("draggable", true);
 
                             square.appendChild(figureImage);
                         }
                     });
-                    //добавить картинку в див квадрата
-                    //как добавить картинку в нужный див?
-
-                    // console.log(square.getAttribute("id"));
 
                     if ((rows + columns) % 2 == 0) {
                         square.classList.add("white");
@@ -286,40 +293,49 @@
                         square.classList.add("black");
                     }
                     //TODO dragstart
-                    square.addEventListener("mousedown", (e) => {
-                        // получить фигуру и клетку где находиться
-                        blackFigures.forEach((element) => {
-                            if (element.nameFigure === e.target.id) {
-                                element.currentPosition =
-                                    e.target.parentNode.id;
-                            }
-                        });
-                        // console.log("1", e.target.id);
-                        // console.log("2 ", e.target.parentNode.id);
-                    });
-                    square.addEventListener("mouseup", (e) => {
-                        // получить фигуру и клетку где находиться
+                    // square.addEventListener("dragend", (e) => {
+                    //     // получить фигуру и клетку где находиться
+                    //     blackFigures.forEach((element) => {
+                    //         if (element.nameFigure === e.target.id) {
+                    //             element.currentPosition =
+                    //                 e.target.parentNode.id;
+                    //         }
+                    //     });
 
-                        console.log("1", e.target.id);
-                        console.log("2 ", e.target.parentNode.id);
-                    });
+                    //     // console.log("1", e.target.id);
+                    //     // console.log("2 ", e.target.parentNode.id);
+                    // });
+                    // square.addEventListener("dragstart", (e) => {
+                    //     // получить фигуру и клетку где находиться
+                    //     // console.log("1", e.target.id);
+                    //     // console.log("2 ", e.target.parentNode.id);
+                    // });
 
                     chessWrapper.appendChild(square);
-                    console.log(blackFigures);
+
+                    // console.log(square);
                 }
             }
-            // console.log(chessWrapper, typeof chessWrapper);
+
+            document.addEventListener("drop", function (event) {
+                event.preventDefault();
+                console.log(event);
+                console.log(event.target.id);
+
+                // var data = event.dataTransfer.getData("Text");
+                // console.log("shtot", data);
+                //console.log("shtoto2", event.dataTransfer);
+                // event.target.appendChild(document.getElementById(data));
+            });
+
+            document.addEventListener("dragover", function (event) {
+                event.preventDefault();
+            });
 
             function letterProcessor(rowsNumber, columnNumber) {
                 const lettersArray = ["A", "B", "C", "D", "E", "F", "G", "H"];
-                // let array = [];
-                // lettersArray.forEach(item =>{
-                //     array.push({columnNumber})
-                // })
 
                 return `${rowsNumber}${lettersArray[columnNumber - 1]}`;
-                // присвоить колонки к своей букве
-                //TODO записать номер ячейки в айди
             }
         </script>
     </body>
