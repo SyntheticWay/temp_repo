@@ -7,9 +7,22 @@
 }
 
 .black {
-    background-color: black;
+    background-color: rgb(255, 222, 104);
 }
 
 .white {
     background-color: #fff;
+}
+
+.figure {
+    cursor: pointer;
+    width: 60px;
+    height: 60px;
+    padding: 5px;
+}
+
+.square {
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }

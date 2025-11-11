@@ -13,46 +13,302 @@
         <script>
             const chessWrapper = document.querySelector(".chess-wrapper");
 
-            // for (let i = 0; i < 64; i++) {
-            //     const square = document.createElement("div");
-            //     if (i % 8 == 0) {
-            //         // if (i % 2 == 0) {
-            //         //     square.classList.add("black");
-            //         // } else {
-            //         //     square.classList.add("white");
-            //         // }
-            //         square.textContent = i;
-            //     } else {
-            //     }
-            //     chessWrapper.appendChild(square);
+            function Figure(
+                name,
+                src,
+                start,
+                current,
+                next,
+                color,
+                side,
+                kill
+            ) {
+                this.nameFigure = name;
+                this.src = src;
+                this.startPosition = start;
+                this.currentPosition = current;
+                this.nextPosition = next;
+                this.color = color;
+                this.figureSide = side;
+                this.killed = kill;
+            }
 
-            // }
+            const whiteLeftBishop = new Figure(
+                "bishop",
+                "images/bishop-w.svg",
+                "8C",
+                null,
+                null,
+                "black",
+                "left",
+                false
+            );
+            const whiteRightBishop = new Figure(
+                "bishop",
+                "images/bishop-w.svg",
+                "8F",
+                null,
+                null,
+                "black",
+                "right",
+                false
+            );
+            const whiteLeftKnight = new Figure(
+                "knight",
+                "images/knight-w.svg",
+                "8B",
+                null,
+                null,
+                "black",
+                "left",
+                false
+            );
+            const whiteRightKnight = new Figure(
+                "knight",
+                "images/knight-w.svg",
+                "8G",
+                null,
+                null,
+                "black",
+                "right",
+                false
+            );
+            const whiteLeftRook = new Figure(
+                "rook",
+                "images/rook-w.svg",
+                "8A",
+                null,
+                null,
+                "black",
+                "left",
+                false
+            );
+            const whiteRightRook = new Figure(
+                "rook",
+                "images/rook-w.svg",
+                "8H",
+                null,
+                null,
+                "black",
+                "left",
+                false
+            );
+            const whiteQueen = new Figure(
+                "queen",
+                "images/queen-w.svg",
+                "8D",
+                null,
+                null,
+                "black",
+                "left",
+                false
+            );
+            const whiteKing = new Figure(
+                "king",
+                "images/king-w.svg",
+                "8E",
+                null,
+                null,
+                "black",
+                "right",
+                false
+            );
+            const whitePawn = new Figure(
+                "pawn",
+                "images/pawn-w.svg",
+                "7A",
+                null,
+                null,
+                "black",
+                "left",
+                false
+            );
+
+            const whiteFigures = [
+                whiteKing,
+                whiteQueen,
+                whiteLeftBishop,
+                whiteRightBishop,
+                whiteLeftKnight,
+                whiteRightKnight,
+                whiteLeftRook,
+                whiteRightRook,
+                whitePawn,
+            ];
+            /////////////////////////////////////////////
+
+            const blackLeftBishop = new Figure(
+                "bishop",
+                "images/bishop-b.svg",
+                "1C",
+                null,
+                null,
+                "black",
+                "left",
+                false
+            );
+            const blackRightBishop = new Figure(
+                "bishop",
+                "images/bishop-b.svg",
+                "1F",
+                null,
+                null,
+                "black",
+                "right",
+                false
+            );
+            const blackLeftKnight = new Figure(
+                "knight",
+                "images/knight-b.svg",
+                "1B",
+                null,
+                null,
+                "black",
+                "left",
+                false
+            );
+            const blackRightKnight = new Figure(
+                "knight",
+                "images/knight-b.svg",
+                "1G",
+                null,
+                null,
+                "black",
+                "right",
+                false
+            );
+            const blackLeftRook = new Figure(
+                "rook",
+                "images/rook-b.svg",
+                "1A",
+                null,
+                null,
+                "black",
+                "left",
+                false
+            );
+            const blackRightRook = new Figure(
+                "rook",
+                "images/rook-b.svg",
+                "1H",
+                null,
+                null,
+                "black",
+                "left",
+                false
+            );
+            const blackQueen = new Figure(
+                "queen",
+                "images/queen-b.svg",
+                "1D",
+                null,
+                null,
+                "black",
+                "left",
+                false
+            );
+            const blackKing = new Figure(
+                "king",
+                "images/king-b.svg",
+                "1E",
+                null,
+                null,
+                "black",
+                "right",
+                false
+            );
+            const blackPawn = new Figure(
+                "pawn",
+                "images/pawn-b.svg",
+                "2A",
+                null,
+                null,
+                "black",
+                "left",
+                false
+            );
+
+            const blackFigures = [
+                blackLeftKnight,
+                blackRightKnight,
+                blackLeftBishop,
+                blackRightBishop,
+                blackLeftRook,
+                blackRightRook,
+                blackQueen,
+                blackKing,
+                blackPawn,
+            ];
+
+            //добавить фигуры
+            //начальное положение фигур
+            //привязать фигуры к их начальному положению
 
             for (let rows = 8; rows > 0; rows--) {
                 for (let columns = 1; columns < 9; columns++) {
                     const square = document.createElement("div");
-                    //дать каждому квадрату номер в айди
-                    //какой номер использовать? => 1a для первой ячейки
-                    //как получить 1а? => rows eta 1
-                    // как получить а? => from columns
-                    // как получить буквы из колумнс ? =>
-
+                    square.setAttribute("class", "square");
+                    // сравнивать текущее положение обьекта с айди квадрата
+                    // поставить там картинку
+                    //использовать цикл возможно форич
                     square.setAttribute("id", letterProcessor(rows, columns));
+
+                    blackFigures.forEach((element) => {
+                        // console.log("id: ", square.id);
+                        if (element.startPosition === square.id) {
+                            const figureImage = document.createElement("img");
+                            figureImage.setAttribute("src", element.src);
+                            figureImage.setAttribute("class", "figure");
+                            figureImage.setAttribute("id", element.nameFigure);
+
+                            square.appendChild(figureImage);
+                        }
+                    });
+                    whiteFigures.forEach((element) => {
+                        // console.log("id: ", square.id);
+                        if (element.startPosition === square.id) {
+                            const figureImage = document.createElement("img");
+                            figureImage.setAttribute("src", element.src);
+                            figureImage.setAttribute("class", "figure");
+                            figureImage.setAttribute("id", element.nameFigure);
+
+                            square.appendChild(figureImage);
+                        }
+                    });
+                    //добавить картинку в див квадрата
+                    //как добавить картинку в нужный див?
+
+                    // console.log(square.getAttribute("id"));
 
                     if ((rows + columns) % 2 == 0) {
                         square.classList.add("white");
                     } else {
                         square.classList.add("black");
                     }
+                    //TODO dragstart
+                    square.addEventListener("mousedown", (e) => {
+                        // получить фигуру и клетку где находиться
+                        blackFigures.forEach((element) => {
+                            if (element.nameFigure === e.target.id) {
+                                element.currentPosition =
+                                    e.target.parentNode.id;
+                            }
+                        });
+                        // console.log("1", e.target.id);
+                        // console.log("2 ", e.target.parentNode.id);
+                    });
+                    square.addEventListener("mouseup", (e) => {
+                        // получить фигуру и клетку где находиться
 
-                    square.addEventListener("click", (e) => {
-                        console.log(e.target.id);
+                        console.log("1", e.target.id);
+                        console.log("2 ", e.target.parentNode.id);
                     });
 
                     chessWrapper.appendChild(square);
+                    console.log(blackFigures);
                 }
             }
-            console.log(chessWrapper, typeof chessWrapper);
+            // console.log(chessWrapper, typeof chessWrapper);
 
             function letterProcessor(rowsNumber, columnNumber) {
                 const lettersArray = ["A", "B", "C", "D", "E", "F", "G", "H"];
