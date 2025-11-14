@@ -13,19 +13,9 @@
         <script>
             const chessWrapper = document.querySelector(".chess-wrapper");
 
-            function Figure(
-                name,
-                src,
-                start,
-                current,
-                next,
-                color,
-                side,
-                kill
-            ) {
+            function Figure(name, src, current, next, color, side, kill) {
                 this.nameFigure = name;
                 this.src = src;
-                this.startPosition = start;
                 this.currentPosition = current;
                 this.nextPosition = next;
                 this.color = color;
@@ -38,7 +28,6 @@
                 "images/bishop-w.svg",
                 "8C",
                 null,
-                null,
                 "black",
                 "left",
                 false
@@ -47,7 +36,6 @@
                 "bishop",
                 "images/bishop-w.svg",
                 "8F",
-                null,
                 null,
                 "black",
                 "right",
@@ -58,7 +46,6 @@
                 "images/knight-w.svg",
                 "8B",
                 null,
-                null,
                 "black",
                 "left",
                 false
@@ -67,7 +54,6 @@
                 "knight",
                 "images/knight-w.svg",
                 "8G",
-                null,
                 null,
                 "black",
                 "right",
@@ -78,7 +64,6 @@
                 "images/rook-w.svg",
                 "8A",
                 null,
-                null,
                 "black",
                 "left",
                 false
@@ -87,7 +72,6 @@
                 "rook",
                 "images/rook-w.svg",
                 "8H",
-                null,
                 null,
                 "black",
                 "left",
@@ -98,7 +82,6 @@
                 "images/queen-w.svg",
                 "8D",
                 null,
-                null,
                 "black",
                 "left",
                 false
@@ -108,7 +91,6 @@
                 "images/king-w.svg",
                 "8E",
                 null,
-                null,
                 "black",
                 "right",
                 false
@@ -117,7 +99,6 @@
                 "pawn",
                 "images/pawn-w.svg",
                 "7A",
-                null,
                 null,
                 "black",
                 "left",
@@ -142,7 +123,6 @@
                 "images/bishop-b.svg",
                 "1C",
                 null,
-                null,
                 "black",
                 "left",
                 false
@@ -151,7 +131,6 @@
                 "bishop",
                 "images/bishop-b.svg",
                 "1F",
-                null,
                 null,
                 "black",
                 "right",
@@ -162,7 +141,6 @@
                 "images/knight-b.svg",
                 "1B",
                 null,
-                null,
                 "black",
                 "left",
                 false
@@ -171,7 +149,6 @@
                 "knight",
                 "images/knight-b.svg",
                 "1G",
-                null,
                 null,
                 "black",
                 "right",
@@ -182,7 +159,6 @@
                 "images/rook-b.svg",
                 "1A",
                 null,
-                null,
                 "black",
                 "left",
                 false
@@ -191,7 +167,6 @@
                 "rook",
                 "images/rook-b.svg",
                 "1H",
-                null,
                 null,
                 "black",
                 "left",
@@ -202,7 +177,6 @@
                 "images/queen-b.svg",
                 "1D",
                 null,
-                null,
                 "black",
                 "left",
                 false
@@ -212,7 +186,6 @@
                 "images/king-b.svg",
                 "1E",
                 null,
-                null,
                 "black",
                 "right",
                 false
@@ -221,7 +194,6 @@
                 "pawn",
                 "images/pawn-b.svg",
                 "2A",
-                null,
                 null,
                 "black",
                 "left",
@@ -261,12 +233,16 @@
 
                     blackFigures.forEach((element) => {
                         // console.log("id: ", square.id);
-                        if (element.startPosition === square.id) {
+                        if (element.currentPosition === square.id) {
                             const figureImage = document.createElement("img");
                             figureImage.setAttribute("src", element.src);
                             figureImage.setAttribute("class", "figure");
                             figureImage.setAttribute("id", element.nameFigure);
                             figureImage.setAttribute("draggable", true);
+                            figureImage.setAttribute(
+                                "ondragstart",
+                                "dragstartHandler(event)"
+                            );
                             // figureImage.setAttribute("ondragstart", (e) =>
                             //     dragstartHandler(e)
                             // );
@@ -276,12 +252,16 @@
                     });
                     whiteFigures.forEach((element) => {
                         // console.log("id: ", square.id);
-                        if (element.startPosition === square.id) {
+                        if (element.currentPosition === square.id) {
                             const figureImage = document.createElement("img");
                             figureImage.setAttribute("src", element.src);
                             figureImage.setAttribute("class", "figure");
                             figureImage.setAttribute("id", element.nameFigure);
                             figureImage.setAttribute("draggable", true);
+                            figureImage.setAttribute(
+                                "ondragstart",
+                                "dragstartHandler(event)"
+                            );
 
                             square.appendChild(figureImage);
                         }
@@ -293,6 +273,11 @@
                         square.classList.add("black");
                     }
                     //TODO dragstart
+
+                    function dragstartHandler(event) {
+                        event.dataTransfer.setData("figureId", event.target.id);
+                    }
+
                     // square.addEventListener("dragend", (e) => {
                     //     // получить фигуру и клетку где находиться
                     //     blackFigures.forEach((element) => {
@@ -316,16 +301,18 @@
                     // console.log(square);
                 }
             }
+            //TODO правильно разместить условия
+
+            // if(element.currentPosition){
+            //     //использовать кернт позишн вместо старт
+            // }
 
             document.addEventListener("drop", function (event) {
                 event.preventDefault();
-                console.log(event);
-                console.log(event.target.id);
 
-                // var data = event.dataTransfer.getData("Text");
-                // console.log("shtot", data);
-                //console.log("shtoto2", event.dataTransfer);
-                // event.target.appendChild(document.getElementById(data));
+                const figureId = event.dataTransfer.getData("figureId");
+                const movedFigure = document.getElementById(figureId);
+                event.target.appendChild(movedFigure);
             });
 
             document.addEventListener("dragover", function (event) {
