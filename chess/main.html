@@ -13,7 +13,7 @@
         <script>
             const chessWrapper = document.querySelector(".chess-wrapper");
 
-            function Figure(name, src, current, next, color, side, kill) {
+            function Figure(name, src, current, next, color, side, kill, id) {
                 this.nameFigure = name;
                 this.src = src;
                 this.currentPosition = current;
@@ -21,6 +21,7 @@
                 this.color = color;
                 this.figureSide = side;
                 this.killed = kill;
+                this.id = id;
             }
 
             const whiteLeftBishop = new Figure(
@@ -30,7 +31,8 @@
                 null,
                 "black",
                 "left",
-                false
+                false,
+                "white-Left-Bishop"
             );
             const whiteRightBishop = new Figure(
                 "bishop",
@@ -39,7 +41,8 @@
                 null,
                 "black",
                 "right",
-                false
+                false,
+                "white-Right-Bishop"
             );
             const whiteLeftKnight = new Figure(
                 "knight",
@@ -48,7 +51,8 @@
                 null,
                 "black",
                 "left",
-                false
+                false,
+                "white-Left-Knight"
             );
             const whiteRightKnight = new Figure(
                 "knight",
@@ -57,7 +61,8 @@
                 null,
                 "black",
                 "right",
-                false
+                false,
+                "white-Right-Knight"
             );
             const whiteLeftRook = new Figure(
                 "rook",
@@ -66,7 +71,8 @@
                 null,
                 "black",
                 "left",
-                false
+                false,
+                "white-Left-Rook"
             );
             const whiteRightRook = new Figure(
                 "rook",
@@ -75,7 +81,8 @@
                 null,
                 "black",
                 "left",
-                false
+                false,
+                "white-Right-Rook"
             );
             const whiteQueen = new Figure(
                 "queen",
@@ -84,7 +91,8 @@
                 null,
                 "black",
                 "left",
-                false
+                false,
+                "white-Queen"
             );
             const whiteKing = new Figure(
                 "king",
@@ -93,17 +101,93 @@
                 null,
                 "black",
                 "right",
-                false
+                false,
+                "white-King"
             );
-            const whitePawn = new Figure(
-                "pawn",
-                "images/pawn-w.svg",
-                "7A",
-                null,
-                "black",
-                "left",
-                false
-            );
+            const whitePawns = {
+                pieces: [
+                    new Figure(
+                        "pawn",
+                        "images/pawn-w.svg",
+                        "7A",
+                        null,
+                        "white",
+                        null,
+                        false,
+                        "white-Pawn-1"
+                    ),
+                    new Figure(
+                        "pawn",
+                        "images/pawn-w.svg",
+                        "7B",
+                        null,
+                        "white",
+                        null,
+                        false,
+                        "white-Pawn-2"
+                    ),
+                    new Figure(
+                        "pawn",
+                        "images/pawn-w.svg",
+                        "7C",
+                        null,
+                        "white",
+                        null,
+                        false,
+                        "white-Pawn-3"
+                    ),
+                    new Figure(
+                        "pawn",
+                        "images/pawn-w.svg",
+                        "7D",
+                        null,
+                        "white",
+                        null,
+                        false,
+                        "white-Pawn-4"
+                    ),
+                    new Figure(
+                        "pawn",
+                        "images/pawn-w.svg",
+                        "7E",
+                        null,
+                        "white",
+                        null,
+                        false,
+                        "white-Pawn-5"
+                    ),
+                    new Figure(
+                        "pawn",
+                        "images/pawn-w.svg",
+                        "7F",
+                        null,
+                        "white",
+                        null,
+                        false,
+                        "white-Pawn-6"
+                    ),
+                    new Figure(
+                        "pawn",
+                        "images/pawn-w.svg",
+                        "7G",
+                        null,
+                        "white",
+                        null,
+                        false,
+                        "white-Pawn-7"
+                    ),
+                    new Figure(
+                        "pawn",
+                        "images/pawn-w.svg",
+                        "7H",
+                        null,
+                        "white",
+                        null,
+                        false,
+                        "white-Pawn-8"
+                    ),
+                ],
+            };
 
             const whiteFigures = [
                 whiteKing,
@@ -114,7 +198,7 @@
                 whiteRightKnight,
                 whiteLeftRook,
                 whiteRightRook,
-                whitePawn,
+                ...whitePawns.pieces,
             ];
             /////////////////////////////////////////////
 
@@ -125,7 +209,8 @@
                 null,
                 "black",
                 "left",
-                false
+                false,
+                "black-Left-Bishop"
             );
             const blackRightBishop = new Figure(
                 "bishop",
@@ -134,7 +219,8 @@
                 null,
                 "black",
                 "right",
-                false
+                false,
+                "black-Right-Bishop"
             );
             const blackLeftKnight = new Figure(
                 "knight",
@@ -143,7 +229,8 @@
                 null,
                 "black",
                 "left",
-                false
+                false,
+                "black-Left-Knight"
             );
             const blackRightKnight = new Figure(
                 "knight",
@@ -152,7 +239,8 @@
                 null,
                 "black",
                 "right",
-                false
+                false,
+                "black-Right-Knight"
             );
             const blackLeftRook = new Figure(
                 "rook",
@@ -161,7 +249,8 @@
                 null,
                 "black",
                 "left",
-                false
+                false,
+                "black-Left-Rook"
             );
             const blackRightRook = new Figure(
                 "rook",
@@ -170,7 +259,8 @@
                 null,
                 "black",
                 "left",
-                false
+                false,
+                "black-Right-Rook"
             );
             const blackQueen = new Figure(
                 "queen",
@@ -179,7 +269,8 @@
                 null,
                 "black",
                 "left",
-                false
+                false,
+                "black-Queen"
             );
             const blackKing = new Figure(
                 "king",
@@ -188,17 +279,93 @@
                 null,
                 "black",
                 "right",
-                false
+                false,
+                "black-King"
             );
-            const blackPawn = new Figure(
-                "pawn",
-                "images/pawn-b.svg",
-                "2A",
-                null,
-                "black",
-                "left",
-                false
-            );
+            const blackPawns = {
+                pieces: [
+                    new Figure(
+                        "pawn",
+                        "images/pawn-b.svg",
+                        "2A",
+                        null,
+                        "black",
+                        null,
+                        false,
+                        "black-Pawn-1"
+                    ),
+                    new Figure(
+                        "pawn",
+                        "images/pawn-b.svg",
+                        "2B",
+                        null,
+                        "black",
+                        null,
+                        false,
+                        "black-Pawn-2"
+                    ),
+                    new Figure(
+                        "pawn",
+                        "images/pawn-b.svg",
+                        "2C",
+                        null,
+                        "black",
+                        null,
+                        false,
+                        "black-Pawn-3"
+                    ),
+                    new Figure(
+                        "pawn",
+                        "images/pawn-b.svg",
+                        "2D",
+                        null,
+                        "black",
+                        null,
+                        false,
+                        "black-Pawn-4"
+                    ),
+                    new Figure(
+                        "pawn",
+                        "images/pawn-b.svg",
+                        "2E",
+                        null,
+                        "black",
+                        null,
+                        false,
+                        "black-Pawn-5"
+                    ),
+                    new Figure(
+                        "pawn",
+                        "images/pawn-b.svg",
+                        "2F",
+                        null,
+                        "black",
+                        null,
+                        false,
+                        "black-Pawn-6"
+                    ),
+                    new Figure(
+                        "pawn",
+                        "images/pawn-b.svg",
+                        "2G",
+                        null,
+                        "black",
+                        null,
+                        false,
+                        "black-Pawn-7"
+                    ),
+                    new Figure(
+                        "pawn",
+                        "images/pawn-b.svg",
+                        "2H",
+                        null,
+                        "black",
+                        null,
+                        false,
+                        "black-Pawn-8"
+                    ),
+                ],
+            };
 
             const blackFigures = [
                 blackLeftKnight,
@@ -210,7 +377,7 @@
                 blackQueen,
                 blackKing,
                 //TODO create pawns array/object
-                blackPawn,
+                ...blackPawns.pieces,
             ];
 
             // function dragoverHandler(e) {
@@ -237,7 +404,7 @@
                             const figureImage = document.createElement("img");
                             figureImage.setAttribute("src", element.src);
                             figureImage.setAttribute("class", "figure");
-                            figureImage.setAttribute("id", element.nameFigure);
+                            figureImage.setAttribute("id", element.id);
                             figureImage.setAttribute("draggable", true);
                             figureImage.setAttribute(
                                 "ondragstart",
@@ -256,7 +423,7 @@
                             const figureImage = document.createElement("img");
                             figureImage.setAttribute("src", element.src);
                             figureImage.setAttribute("class", "figure");
-                            figureImage.setAttribute("id", element.nameFigure);
+                            figureImage.setAttribute("id", element.id);
                             figureImage.setAttribute("draggable", true);
                             figureImage.setAttribute(
                                 "ondragstart",
