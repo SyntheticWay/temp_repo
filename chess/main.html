@@ -14,26 +14,31 @@
             const chessWrapper = document.querySelector(".chess-wrapper");
 
             class Figure {
-                constructor(name, src, current, next, color, side, kill) {
+                constructor(name, src, current, previous, color, side, kill) {
                     this.nameFigure = name;
                     this.src = src;
                     this.currentPosition = current;
-                    this.nextPosition = next;
+                    this.previousPosition = previous;
                     this.color = color;
                     this.figureSide = side;
                     this.killed = kill;
                 }
-                set currentPosition(position) {
+                // set currentPosition(position) {
+                //     this.currentPosition = position;
+                // }
+                // set nextPosition(position) {
+                //     this.nextPosition = position;
+                // }
+                // get currentPosition() {
+                //     return this.currentPosition;
+                // }
+                // get nextPosition() {
+                //     return this.nextPosition;
+                // }
+
+                moveTo(position) {
+                    this.previousPosition = this.currentPosition;
                     this.currentPosition = position;
-                }
-                set nextPosition(position) {
-                    this.nextPosition = position;
-                }
-                get currentPosition() {
-                    return this.currentPosition;
-                }
-                get nextPosition() {
-                    return this.nextPosition;
                 }
             }
 
@@ -362,38 +367,85 @@
                 ...blackPawns.pieces,
             ];
 
+            // for (let rows = 8; rows > 0; rows--) {
+            //     for (let columns = 1; columns < 9; columns++) {
+            // const square = document.createElement("div");
+            // square.setAttribute("class", "square");
+            // square.setAttribute("ondragover", (e) =>
+            //     dragoverHandler(e)
+            // );
+            // square.setAttribute("id", letterProcessor(rows, columns));
+            // blackFigures.forEach((figure) => {
+            //     // console.log("id: ", square.id);
+            //     // положить и достать значение обьекта фигуры
+            //     if (figure.currentPosition === square.id) {
+            //         const figureImage = document.createElement("img");
+            //         figureImage.setAttribute("src", figure.src);
+            //         figureImage.setAttribute("class", "figure");
+            //         figureImage.setAttribute(
+            //             "id",
+            //             `${figure.nameFigure}-${square.id}`
+            //         );
+            //         figureImage.setAttribute("draggable", true);
+            //         figureImage.setAttribute(
+            //             "ondragstart",
+            //             "dragstartHandler(event)"
+            //         );
+            //         figureImage.setAttribute("data-figure", figure);
+            //         square.appendChild(figureImage);
+            //         //console.log(figure);
+            //     }
+            // });
+            // whiteFigures.forEach((element) => {
+            //     //console.log("id: ", square.id);
+            //     if (element.currentPosition === square.id) {
+            //         const figureImage = document.createElement("img");
+            //         figureImage.setAttribute("src", element.src);
+            //         figureImage.setAttribute("class", "figure");
+            //         figureImage.setAttribute(
+            //             "id",
+            //             `${element.nameFigure}-${square.id}`
+            //         );
+            //         figureImage.setAttribute("draggable", true);
+            //         figureImage.setAttribute(
+            //             "ondragstart",
+            //             "dragstartHandler(event)"
+            //         );
+            //         square.appendChild(figureImage);
+            //     }
+            // });
+            // if ((rows + columns) % 2 == 0) {
+            //     square.classList.add("white");
+            // } else {
+            //     square.classList.add("black");
+            // }
+            // //TODO dragstart
+            // function dragstartHandler(event) {
+            //     event.dataTransfer.setData("figureId", event.target.id);
+            //     console.log("3");
+            // }
+            // chessWrapper.appendChild(square);
+            //     }
+            // }
+            //TODO правильно разместить условия
+
+            // if(element.currentPosition){
+            //     //использовать кернт позишн вместо старт
+            // }
+
             for (let rows = 8; rows > 0; rows--) {
                 for (let columns = 1; columns < 9; columns++) {
                     const square = document.createElement("div");
                     square.setAttribute("class", "square");
-                    square.setAttribute("ondragover", (e) =>
-                        dragoverHandler(e)
-                    );
                     square.setAttribute("id", letterProcessor(rows, columns));
 
-                    blackFigures.forEach((figure) => {
-                        // console.log("id: ", square.id);
-                        // положить и достать значение обьекта фигуры
-                        if (figure.currentPosition === square.id) {
-                            const figureImage = document.createElement("img");
-                            figureImage.setAttribute("src", figure.src);
-                            figureImage.setAttribute("class", "figure");
-                            figureImage.setAttribute(
-                                "id",
-                                `${figure.nameFigure}-${square.id}`
-                            );
-                            figureImage.setAttribute("draggable", true);
-                            figureImage.setAttribute(
-                                "ondragstart",
-                                "dragstartHandler(event)"
-                            );
-                            figureImage.setAttribute("data-figure", figure);
-                            square.appendChild(figureImage);
-                            //console.log(figure);
-                        }
-                    });
+                    if ((rows + columns) % 2 == 0) {
+                        square.classList.add("white");
+                    } else {
+                        square.classList.add("black");
+                    }
+
                     whiteFigures.forEach((element) => {
-                        //console.log("id: ", square.id);
                         if (element.currentPosition === square.id) {
                             const figureImage = document.createElement("img");
                             figureImage.setAttribute("src", element.src);
@@ -403,35 +455,59 @@
                                 `${element.nameFigure}-${square.id}`
                             );
                             figureImage.setAttribute("draggable", true);
-                            figureImage.setAttribute(
-                                "ondragstart",
-                                "dragstartHandler(event)"
+                            // figureImage.setAttribute(
+                            //     "ondragstart",
+                            //     "dragstartHandler(event)"
+                            // );
+
+                            figureImage.addEventListener(
+                                "dragstart",
+                                (event) => {
+                                    event.dataTransfer.setData(
+                                        "figureId",
+                                        event.target.id
+                                    );
+                                }
                             );
 
                             square.appendChild(figureImage);
                         }
                     });
 
-                    if ((rows + columns) % 2 == 0) {
-                        square.classList.add("white");
-                    } else {
-                        square.classList.add("black");
-                    }
-                    //TODO dragstart
+                    blackFigures.forEach((figure) => {
+                        if (figure.currentPosition === square.id) {
+                            const figureImage = document.createElement("img");
+                            figureImage.setAttribute("src", figure.src);
+                            figureImage.setAttribute("class", "figure");
+                            figureImage.setAttribute(
+                                "id",
+                                `${figure.nameFigure}-${square.id}`
+                            );
+                            figureImage.setAttribute("draggable", true);
+                            // figureImage.setAttribute(
+                            //     "ondragstart",
+                            //     "dragstartHandler(event)"
+                            // );
 
-                    function dragstartHandler(event) {
-                        event.dataTransfer.setData("figureId", event.target.id);
-                        console.log("3");
-                    }
+                            //figureImage.setAttribute("data-figure", figure);
+
+                            figureImage.addEventListener(
+                                "dragstart",
+                                (event) => {
+                                    event.dataTransfer.setData(
+                                        "figureId",
+                                        event.target.id
+                                    );
+                                }
+                            );
+
+                            square.appendChild(figureImage);
+                        }
+                    });
 
                     chessWrapper.appendChild(square);
                 }
             }
-            //TODO правильно разместить условия
-
-            // if(element.currentPosition){
-            //     //использовать кернт позишн вместо старт
-            // }
 
             document.addEventListener("drop", function (event) {
                 event.preventDefault();
