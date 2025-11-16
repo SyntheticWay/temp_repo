@@ -13,15 +13,28 @@
         <script>
             const chessWrapper = document.querySelector(".chess-wrapper");
 
-            function Figure(name, src, current, next, color, side, kill, id) {
-                this.nameFigure = name;
-                this.src = src;
-                this.currentPosition = current;
-                this.nextPosition = next;
-                this.color = color;
-                this.figureSide = side;
-                this.killed = kill;
-                this.id = id;
+            class Figure {
+                constructor(name, src, current, next, color, side, kill) {
+                    this.nameFigure = name;
+                    this.src = src;
+                    this.currentPosition = current;
+                    this.nextPosition = next;
+                    this.color = color;
+                    this.figureSide = side;
+                    this.killed = kill;
+                }
+                set currentPosition(position) {
+                    this.currentPosition = position;
+                }
+                set nextPosition(position) {
+                    this.nextPosition = position;
+                }
+                get currentPosition() {
+                    return this.currentPosition;
+                }
+                get nextPosition() {
+                    return this.nextPosition;
+                }
             }
 
             const whiteLeftBishop = new Figure(
@@ -31,8 +44,7 @@
                 null,
                 "black",
                 "left",
-                false,
-                "white-Left-Bishop"
+                false
             );
             const whiteRightBishop = new Figure(
                 "bishop",
@@ -41,8 +53,7 @@
                 null,
                 "black",
                 "right",
-                false,
-                "white-Right-Bishop"
+                false
             );
             const whiteLeftKnight = new Figure(
                 "knight",
@@ -51,8 +62,7 @@
                 null,
                 "black",
                 "left",
-                false,
-                "white-Left-Knight"
+                false
             );
             const whiteRightKnight = new Figure(
                 "knight",
@@ -61,8 +71,7 @@
                 null,
                 "black",
                 "right",
-                false,
-                "white-Right-Knight"
+                false
             );
             const whiteLeftRook = new Figure(
                 "rook",
@@ -71,8 +80,7 @@
                 null,
                 "black",
                 "left",
-                false,
-                "white-Left-Rook"
+                false
             );
             const whiteRightRook = new Figure(
                 "rook",
@@ -81,8 +89,7 @@
                 null,
                 "black",
                 "left",
-                false,
-                "white-Right-Rook"
+                false
             );
             const whiteQueen = new Figure(
                 "queen",
@@ -91,8 +98,7 @@
                 null,
                 "black",
                 "left",
-                false,
-                "white-Queen"
+                false
             );
             const whiteKing = new Figure(
                 "king",
@@ -101,8 +107,7 @@
                 null,
                 "black",
                 "right",
-                false,
-                "white-King"
+                false
             );
             const whitePawns = {
                 pieces: [
@@ -113,8 +118,7 @@
                         null,
                         "white",
                         null,
-                        false,
-                        "white-Pawn-1"
+                        false
                     ),
                     new Figure(
                         "pawn",
@@ -123,8 +127,7 @@
                         null,
                         "white",
                         null,
-                        false,
-                        "white-Pawn-2"
+                        false
                     ),
                     new Figure(
                         "pawn",
@@ -133,8 +136,7 @@
                         null,
                         "white",
                         null,
-                        false,
-                        "white-Pawn-3"
+                        false
                     ),
                     new Figure(
                         "pawn",
@@ -143,8 +145,7 @@
                         null,
                         "white",
                         null,
-                        false,
-                        "white-Pawn-4"
+                        false
                     ),
                     new Figure(
                         "pawn",
@@ -153,8 +154,7 @@
                         null,
                         "white",
                         null,
-                        false,
-                        "white-Pawn-5"
+                        false
                     ),
                     new Figure(
                         "pawn",
@@ -163,8 +163,7 @@
                         null,
                         "white",
                         null,
-                        false,
-                        "white-Pawn-6"
+                        false
                     ),
                     new Figure(
                         "pawn",
@@ -173,8 +172,7 @@
                         null,
                         "white",
                         null,
-                        false,
-                        "white-Pawn-7"
+                        false
                     ),
                     new Figure(
                         "pawn",
@@ -183,8 +181,7 @@
                         null,
                         "white",
                         null,
-                        false,
-                        "white-Pawn-8"
+                        false
                     ),
                 ],
             };
@@ -209,8 +206,7 @@
                 null,
                 "black",
                 "left",
-                false,
-                "black-Left-Bishop"
+                false
             );
             const blackRightBishop = new Figure(
                 "bishop",
@@ -219,8 +215,7 @@
                 null,
                 "black",
                 "right",
-                false,
-                "black-Right-Bishop"
+                false
             );
             const blackLeftKnight = new Figure(
                 "knight",
@@ -229,8 +224,7 @@
                 null,
                 "black",
                 "left",
-                false,
-                "black-Left-Knight"
+                false
             );
             const blackRightKnight = new Figure(
                 "knight",
@@ -239,8 +233,7 @@
                 null,
                 "black",
                 "right",
-                false,
-                "black-Right-Knight"
+                false
             );
             const blackLeftRook = new Figure(
                 "rook",
@@ -249,8 +242,7 @@
                 null,
                 "black",
                 "left",
-                false,
-                "black-Left-Rook"
+                false
             );
             const blackRightRook = new Figure(
                 "rook",
@@ -259,8 +251,7 @@
                 null,
                 "black",
                 "left",
-                false,
-                "black-Right-Rook"
+                false
             );
             const blackQueen = new Figure(
                 "queen",
@@ -269,9 +260,9 @@
                 null,
                 "black",
                 "left",
-                false,
-                "black-Queen"
+                false
             );
+
             const blackKing = new Figure(
                 "king",
                 "images/king-b.svg",
@@ -279,8 +270,7 @@
                 null,
                 "black",
                 "right",
-                false,
-                "black-King"
+                false
             );
             const blackPawns = {
                 pieces: [
@@ -291,8 +281,7 @@
                         null,
                         "black",
                         null,
-                        false,
-                        "black-Pawn-1"
+                        false
                     ),
                     new Figure(
                         "pawn",
@@ -301,8 +290,7 @@
                         null,
                         "black",
                         null,
-                        false,
-                        "black-Pawn-2"
+                        false
                     ),
                     new Figure(
                         "pawn",
@@ -311,8 +299,7 @@
                         null,
                         "black",
                         null,
-                        false,
-                        "black-Pawn-3"
+                        false
                     ),
                     new Figure(
                         "pawn",
@@ -321,8 +308,7 @@
                         null,
                         "black",
                         null,
-                        false,
-                        "black-Pawn-4"
+                        false
                     ),
                     new Figure(
                         "pawn",
@@ -331,8 +317,7 @@
                         null,
                         "black",
                         null,
-                        false,
-                        "black-Pawn-5"
+                        false
                     ),
                     new Figure(
                         "pawn",
@@ -341,8 +326,7 @@
                         null,
                         "black",
                         null,
-                        false,
-                        "black-Pawn-6"
+                        false
                     ),
                     new Figure(
                         "pawn",
@@ -351,8 +335,7 @@
                         null,
                         "black",
                         null,
-                        false,
-                        "black-Pawn-7"
+                        false
                     ),
                     new Figure(
                         "pawn",
@@ -361,8 +344,7 @@
                         null,
                         "black",
                         null,
-                        false,
-                        "black-Pawn-8"
+                        false
                     ),
                 ],
             };
@@ -380,15 +362,6 @@
                 ...blackPawns.pieces,
             ];
 
-            // function dragoverHandler(e) {
-            //     console.log("shtoto2");
-            //     e.preventDefault();
-            // }
-            // function dragstartHandler(ev) {
-            //     ev.dataTransfer.setData("text", ev.target.id);
-            //     console.log("shtoto");
-            // }
-
             for (let rows = 8; rows > 0; rows--) {
                 for (let columns = 1; columns < 9; columns++) {
                     const square = document.createElement("div");
@@ -398,32 +371,37 @@
                     );
                     square.setAttribute("id", letterProcessor(rows, columns));
 
-                    blackFigures.forEach((element) => {
+                    blackFigures.forEach((figure) => {
                         // console.log("id: ", square.id);
-                        if (element.currentPosition === square.id) {
+                        // положить и достать значение обьекта фигуры
+                        if (figure.currentPosition === square.id) {
                             const figureImage = document.createElement("img");
-                            figureImage.setAttribute("src", element.src);
+                            figureImage.setAttribute("src", figure.src);
                             figureImage.setAttribute("class", "figure");
-                            figureImage.setAttribute("id", element.id);
+                            figureImage.setAttribute(
+                                "id",
+                                `${figure.nameFigure}-${square.id}`
+                            );
                             figureImage.setAttribute("draggable", true);
                             figureImage.setAttribute(
                                 "ondragstart",
                                 "dragstartHandler(event)"
                             );
-                            // figureImage.setAttribute("ondragstart", (e) =>
-                            //     dragstartHandler(e)
-                            // );
-
+                            figureImage.setAttribute("data-figure", figure);
                             square.appendChild(figureImage);
+                            //console.log(figure);
                         }
                     });
                     whiteFigures.forEach((element) => {
-                        // console.log("id: ", square.id);
+                        //console.log("id: ", square.id);
                         if (element.currentPosition === square.id) {
                             const figureImage = document.createElement("img");
                             figureImage.setAttribute("src", element.src);
                             figureImage.setAttribute("class", "figure");
-                            figureImage.setAttribute("id", element.id);
+                            figureImage.setAttribute(
+                                "id",
+                                `${element.nameFigure}-${square.id}`
+                            );
                             figureImage.setAttribute("draggable", true);
                             figureImage.setAttribute(
                                 "ondragstart",
@@ -443,29 +421,10 @@
 
                     function dragstartHandler(event) {
                         event.dataTransfer.setData("figureId", event.target.id);
+                        console.log("3");
                     }
 
-                    // square.addEventListener("dragend", (e) => {
-                    //     // получить фигуру и клетку где находиться
-                    //     blackFigures.forEach((element) => {
-                    //         if (element.nameFigure === e.target.id) {
-                    //             element.currentPosition =
-                    //                 e.target.parentNode.id;
-                    //         }
-                    //     });
-
-                    //     // console.log("1", e.target.id);
-                    //     // console.log("2 ", e.target.parentNode.id);
-                    // });
-                    // square.addEventListener("dragstart", (e) => {
-                    //     // получить фигуру и клетку где находиться
-                    //     // console.log("1", e.target.id);
-                    //     // console.log("2 ", e.target.parentNode.id);
-                    // });
-
                     chessWrapper.appendChild(square);
-
-                    // console.log(square);
                 }
             }
             //TODO правильно разместить условия
@@ -479,11 +438,18 @@
 
                 const figureId = event.dataTransfer.getData("figureId");
                 const movedFigure = document.getElementById(figureId);
+                // if(movedFigure !== ){
+                // console.log(figureId);
+                // console.log(movedFigure);
+                console.log("2");
+                //sdes problem
                 event.target.appendChild(movedFigure);
+                // }
             });
 
             document.addEventListener("dragover", function (event) {
                 event.preventDefault();
+                console.log("1");
             });
 
             function letterProcessor(rowsNumber, columnNumber) {
@@ -494,3 +460,4 @@
         </script>
     </body>
 </html>
+<!-- сравнить current position  с next position и разобраться чо происходит -->
