@@ -1,4 +1,4 @@
-import { placeFigures } from "./figures.js";
+import { figures } from "./figures.js";
 
 const chessWrapper = document.querySelector(".chess-wrapper");
 
@@ -22,13 +22,12 @@ for (let rows = 8; rows > 0; rows--) {
             const figureId = event.dataTransfer.getData("figureId");
             const movedFigure = document.getElementById(figureId);
 
-            //method find wse figury i hod budet tut(ne)
-
-            event.target.appendChild(movedFigure);
+            const figure = figures.find();
+            // move
         });
     }
 }
-const allFigures = placeFigures();
+
 function letterProcessor(rowsNumber, columnNumber) {
     const lettersArray = ["A", "B", "C", "D", "E", "F", "G", "H"];
 
